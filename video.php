@@ -43,12 +43,12 @@ class VideoEditor {
         $this->lq_model = "library/rnnoise-models/lq/lq.rnnn"; // low good
         $this->cb_model = "library/rnnoise-models/cb/cb.rnnn";
         $this->input_path = "src/input";
-        $this->output_path =  "../api/src/output";
+        $this->output_path =  "src/output";
     }
 
     public function getAudio($videoPath) {
-        $outputPath = $this->output_path . "/audio/_" . basename($videoPath, '.mp4') . "_" . time() . ".aac";
-        $command =  escapeshellarg($this->ffmpegPath) . ' -i ' . escapeshellarg($videoPath) . ' -vn -acodec copy ' . escapeshellarg($outputPath);
+        $outputPath = $this->output_path . "/audio/_".basename($videoPath, '.mp4') . "_" . time() . ".aac";
+        $command =  escapeshellarg($this->ffmpegPath) . ' -i ' . escapeshellarg($videoPath) . ' -vn -acodec copy '.escapeshellarg($outputPath);
         $this->executeCommand($command);
         return $outputPath;
     }
